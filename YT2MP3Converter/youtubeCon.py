@@ -60,25 +60,37 @@ def convert(song):
     artist = songInfo[3]
     album = songInfo[4]
 
-    #convert YT to MP3
-    filename = downloadMP3(URL)
-    os.rename(filename, title + ".mp3")
-    filename = title + ".mp3"
+    try:
+        #convert YT to MP3
+        filename = downloadMP3(URL)
+        os.rename(filename, title + ".mp3")
+        filename = title + ".mp3"
 
-    #edit meta data
-    editMetaData(filename, albumArt, title, artist, album)
+        #edit meta data
+        editMetaData(filename, albumArt, title, artist, album)
 
-    #move the file to the iTunes folder
-    os.rename(filename, "C:/Users/lildu/Music/iTunes/iTunes Media/Automatically Add to iTunes/{}".format(filename))
+        #move the file to the iTunes folder
+        os.rename(filename, "C:/Users/lildu/Music/iTunes/iTunes Media/Automatically Add to iTunes/{}".format(filename))
 
-    print("{} by {}, is now added to iTunes".format(title, artist))
+        print("{} by {}, is now added to iTunes".format(title, artist))
+        emptyString = ""
+        return emptyString
+    
+    except:
+        print("{} by {} failed to be added, check the album art lol")
+        return title
 
 #this should open a text file and convert every single line
 def parseTextFile(file):
     f = open(file, "r")
+    failList = []
     for song in f:
-        convert(song)
+        value = convert(song)
+        if value != "":
+            failList.append(value)
     f.close()
+    print("The following failed, consider checking them:")
+    print(failList)
 
 if __name__ == "__main__":
     parseTextFile(sys.argv[1])
