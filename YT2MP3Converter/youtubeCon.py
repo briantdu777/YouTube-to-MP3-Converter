@@ -52,7 +52,7 @@ def convert(song):
 
     if len(songInfo) != 5:
         print("USAGE ERROR: [youtubeURL] [albumArt] [title] [artist] [album]")
-        return
+        return "!!!USAGE ERROR!!!"
 
     URL = songInfo[0]
     albumArt = songInfo[1]
@@ -66,18 +66,27 @@ def convert(song):
         os.rename(filename, title + ".mp3")
         filename = title + ".mp3"
 
+    except:
+        print("{} by {} failed to be converted".format(title, artist))
+        return title
+    
+    try:
         #edit meta data
         editMetaData(filename, albumArt, title, artist, album)
 
+    except:
+        print("{} by {} failed to change metadata".format(title, artist))
+        return title
+
+    try:
         #move the file to the iTunes folder
         os.rename(filename, "C:/Users/lildu/Music/iTunes/iTunes Media/Automatically Add to iTunes/{}".format(filename))
-
         print("{} by {}, is now added to iTunes".format(title, artist))
         emptyString = ""
         return emptyString
     
     except:
-        print("{} by {} failed to be added, check the album art lol")
+        print("{} by {} failed to be added to itunes".format(title, artist))
         return title
 
 #this should open a text file and convert every single line
