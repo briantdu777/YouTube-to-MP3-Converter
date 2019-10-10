@@ -98,8 +98,9 @@ def parseTextFile(file):
         if value != "":
             failList.append(value)
     f.close()
-    print("The following failed, consider checking them:")
-    print(failList)
+    if failList:
+        print("The following failed, consider checking them:")
+        print(failList)
 
 if __name__ == "__main__":
     parseTextFile(sys.argv[1])
