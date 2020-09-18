@@ -1,0 +1,6 @@
+,./pictures/,1234 [Live],Feist,Let It Die
+,./pictures/,Go!!! (Fighting Dreamers),Flow,Go!!!
+,./pictures/,The World's End & Hanneikyuuteki ni Aishite yo,Yui Horie,Golden Time OST
+,./pictures/,Vanilla Salt,Yui Horie,Toradora OST
+,./pictures/,Orange,Yui Horie,Toradora OST
+,./pictures/,Mushaboom [Live],Feist,Let It Die
