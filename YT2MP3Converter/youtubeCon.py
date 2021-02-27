@@ -95,7 +95,7 @@ def convert(song):
 
     try:
         #move the file to the iTunes folder
-        os.rename(filename, "C:/Users/theal/Music/iTunes/iTunes Media/Automatically Add to iTunes/{}".format(filename))
+        os.rename(filename, "C:/Users/BrianDu/Music/iTunes/iTunes Media/Automatically Add to iTunes/{}".format(filename))
         print("{} by {}, is now added to iTunes".format(title, artist))
         emptyString = ""
         return emptyString
