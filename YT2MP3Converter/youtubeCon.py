@@ -65,44 +65,22 @@ def convert(song):
     artist = songInfo[3]
     album = songInfo[4]
 
-    try:
-        #convert YT to MP3
-        filename = downloadMP3(URL)
-        print(filename)
+    #convert YT to MP3
+    filename = downloadMP3(URL)
+        
+    #Change it's name
+    os.rename(filename, title + ".mp3")
+    filename = title + ".mp3"
 
+    #edit meta data
+    editMetaData(filename, albumArt, title, artist, album)
 
-    except:
-        print("{} by {} failed to be converted".format(title, artist))
-        return title
+    #move the file to the iTunes folder
+    os.rename(filename, "C:/Users/BrianDu/Music/iTunes/iTunes Media/Automatically Add to iTunes/{}".format(filename))
+    print("{} by {}, is now added to iTunes".format(title, artist))
+    emptyString = ""
+    return emptyString
     
-
-    try:
-        #Change it's name
-        os.rename(filename, title + ".mp3")
-        filename = title + ".mp3"
-
-    except:
-        print("{} by {} failed to change its name".format(title, artist))
-        return title
-
-    try:
-        #edit meta data
-        editMetaData(filename, albumArt, title, artist, album)
-
-    except:
-        print("{} by {} failed to change metadata".format(title, artist))
-        return title
-
-    try:
-        #move the file to the iTunes folder
-        os.rename(filename, "C:/Users/BrianDu/Music/iTunes/iTunes Media/Automatically Add to iTunes/{}".format(filename))
-        print("{} by {}, is now added to iTunes".format(title, artist))
-        emptyString = ""
-        return emptyString
-    
-    except:
-        print("{} by {} failed to be added to itunes".format(title, artist))
-        return title
 
 #this should open a text file and convert every single line
 def parseTextFile(file):
