@@ -25,7 +25,7 @@ album: ablbum of song
 here's an example:
 https://youtu.be/Lur-rvf6A1c,./pictures/380.png,Clarity,Zedd,Clarity
 
-3. On line 94 of youtubeCon.py:
+3. On line 79 of youtubeCon.py:
 
     ```os.rename(filename, "C:/Users/theal/Music/iTunes/iTunes Media/Automatically Add to iTunes/{}")```
 
